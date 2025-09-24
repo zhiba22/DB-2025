@@ -1,9 +1,7 @@
-CREATE DATABASE Faculty;
-
-\c Faculty;
+CREATE DATABASE faculty;
 
 CREATE TABLE Students(
-    id SERIAL PRIMARY KEY,
+    id SERIAL,
     firstname VARCHAR(70),
     lastname VARCHAR(70),
     isActive INTEGER,
@@ -11,11 +9,10 @@ CREATE TABLE Students(
 );
 
 ALTER TABLE Students 
-ADD COLUMN gender BOOLEAN;
+ADD COLUMN gender INTEGER;
 
-ALTER TABLE Students
-ALTER COLUMN isActive TYPE BOOLEAN
-USING isActive::BOOLEAN;
+ALTER TABLE students
+ALTER COLUMN isActive TYPE BOOLEAN;
 
 ALTER TABLE Students 
 ALTER COLUMN gender SET DEFAULT 0;
@@ -23,13 +20,21 @@ ALTER COLUMN gender SET DEFAULT 0;
 ALTER TABLE Students 
 ALTER COLUMN gender DROP DEFAULT;
 
-ALTER TABLE Students
-ADD CONSTRAINT students_pk PRIMARY KEY (id);
+ALTER TABLE Students 
+ADD PRIMARY KEY(id);
 
 ALTER TABLE Students 
 ALTER COLUMN email SET DEFAULT 'abc@gmail.com';
 
 DROP TABLE Students;
 
-\c postgres;
-DROP DATABASE Faculty;
+DROP DATABASE faculty;
+
+/*
+CREATE TABLE product_copy 
+LIKE products;
+*/
+
+--DELETE - deletes a specific row in a table based on condition WHERE
+--TRUNCATE - deletes all rows from a table 
+--DROP - Permanently deletes the entire table, including its data and structure, from the database
