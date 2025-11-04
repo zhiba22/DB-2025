@@ -41,7 +41,7 @@ SELECT film_id, title, length, replacement_cost
 FROM film
 WHERE replacement_cost < 25; --11
 
-SELECT DISTINCT rating
+SELECT DISTINCT rating -- This keyword combination instructs the database to return only unique rows.
 FROM film; --12
 
 SELECT release_year, COUNT(*) AS film_count
@@ -65,4 +65,5 @@ DELETE FROM film
 WHERE language_id = (
     SELECT language_id FROM language WHERE name = 'Mandarin' )
 RETURNING *; --16
+
 
